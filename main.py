@@ -15,11 +15,11 @@ while True:
     try:
         n = int(input("\nCombien de produits voulez-vous saisir ? "))
         if n <= 0:
-            print("  Veuillez entrer un nombre positif.")
+            print("⚠️  Veuillez entrer un nombre positif.")
         else:
             break
     except ValueError:
-        print("  Veuillez entrer un nombre entier valide.")
+        print("⚠️  Veuillez entrer un nombre entier valide.")
 
 print()
 for i in range(n):
@@ -29,37 +29,37 @@ for i in range(n):
             id_produit = int(input("  ID       : "))
             break
         except ValueError:
-            print("  ID invalide, entrez un entier.")
+            print("  ⚠️  ID invalide, entrez un entier.")
 
     while True:
         try:
             prix = float(input("  Prix     : "))
             if prix < 0:
-                print("Le prix ne peut pas être négatif.")
+                print("  ⚠️  Le prix ne peut pas être négatif.")
             else:
                 break
         except ValueError:
-            print("Prix invalide, entrez un nombre.")
+            print("  ⚠️  Prix invalide, entrez un nombre.")
 
     while True:
         try:
             quantite = int(input("  Quantité : "))
             if quantite < 0:
-                print("    La quantité ne peut pas être négative.")
+                print("  ⚠️  La quantité ne peut pas être négative.")
             else:
                 break
         except ValueError:
-            print("    Quantité invalide, entrez un entier.")
+            print("  ⚠️  Quantité invalide, entrez un entier.")
 
     while True:
         try:
             remise = float(input("  Remise % : "))
             if not (0 <= remise <= 100):
-                print("    La remise doit être entre 0 et 100.")
+                print("  ⚠️  La remise doit être entre 0 et 100.")
             else:
                 break
         except ValueError:
-            print("    Remise invalide, entrez un nombre.")
+            print("  ⚠️  Remise invalide, entrez un nombre.")
 
     ventes_data.append({
         "ID": id_produit,
@@ -78,7 +78,7 @@ with open(ventes_file, mode="w", newline="", encoding="utf-8") as f:
     writer.writeheader()
     writer.writerows(ventes_data)
 
-print(f"\n Fichier '{ventes_file}' généré avec succès.\n")
+print(f"\n✅ Fichier '{ventes_file}' généré avec succès.\n")
 
 # ─────────────────────────────────────────
 # 2-6. Calculs
@@ -133,8 +133,8 @@ for r in resultats:
     print(f"{r['ID']:<8} {r['CA_Brut']:>10.2f} {r['CA_Net']:>10.2f} {r['TVA']:>10.2f}")
 print("=" * 55)
 
-print(f"\n CA Total de l'entreprise : {ca_total:.2f} €")
-print(f" Produit le plus rentable  : ID {meilleur_id} (CA Net = {meilleur_ca_net:.2f} €)\n")
+print(f"\n💰 CA Total de l'entreprise : {ca_total:.2f} €")
+print(f"🏆 Produit le plus rentable  : ID {meilleur_id} (CA Net = {meilleur_ca_net:.2f} €)\n")
 
 # ─────────────────────────────────────────
 # 7. Export resultats_final.csv
@@ -148,10 +148,10 @@ with open(resultats_file, mode="w", newline="", encoding="utf-8") as f:
     writer.writeheader()
     writer.writerows(resultats)
 
-print(f" Fichier '{resultats_file}' exporté avec succès.\n")
+print(f"✅ Fichier '{resultats_file}' exporté avec succès.\n")
 
 # ─────────────────────────────────────────
-# Graphiques Matplotlib
+# BONUS : Graphiques Matplotlib
 # ─────────────────────────────────────────
 
 try:
@@ -189,8 +189,8 @@ try:
     plt.tight_layout()
     plt.savefig("graphiques_ventes.png", dpi=150)
     plt.show()
-    print(" Graphiques sauvegardés dans 'graphiques_ventes.png'.")
+    print("📊 Graphiques sauvegardés dans 'graphiques_ventes.png'.")
 
 except ImportError:
-    print("  Matplotlib non installé — graphiques ignorés.")
+    print("⚠️  Matplotlib non installé — graphiques ignorés.")
     print("   Installez-le avec : pip install matplotlib")

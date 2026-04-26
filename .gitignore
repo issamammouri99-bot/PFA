@@ -1,9 +1,0 @@
-.venv/
-__pycache__/
-*.pyc
-*.pyo
-*.pyd
-.env
-.vscode/*
-!/.vscode/launch.json
-!/.vscode/tasks.json
